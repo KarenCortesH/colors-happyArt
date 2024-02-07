@@ -1,13 +1,49 @@
 import React from 'react'
+import { useState } from 'react';
+
 
 const Color = () => {
+    // Definimos un estado para almacenar los colores seleccionados
+    const [selectedColors, setSelectedColors] = useState([]);
+    // Función para manejar el evento de selección de color
+    const handleColorSelect = (color) => {
+        if (selectedColors.includes(color)) {
+            // Si el color ya está seleccionado, lo eliminamos de la lista
+            setSelectedColors(selectedColors.filter((c) => c !== color));
+        } else {
+            // Si el color no está seleccionado, lo agregamos a la lista
+            setSelectedColors([...selectedColors, color]);
+        }
+    };
     return (
-        <div class="bg-white">
-            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h1 class="text-2xl font-bold tracking-tight text-gray-900">Color</h1>
+        <div className="max-w-screen-md mx-auto">
+            <div className="text-center font-bold text-xl mb-4">Selecciona uno o más colores</div>
+            <div className="grid grid-cols-5 gap-4 justify-items-center">
+                {/* Renderizamos las 10 imágenes de colores */}
+                {Array.from({ length: 10 }).map((_, index) => (
+                    <img
+                        key={index}
+                        src={'../assets/Color${index + 1}.jpg'}
+                        alt={'Color ${index + 1}'}
+                        className={`w-32 h-32 cursor-pointer ${selectedColors.includes(`color${index + 1}`) ? 'border-blue-500' : 'border-gray-300'
+                            }`}
+                        onClick={() => handleColorSelect(`color${index + 1}`)}
+                    />
+                ))}
+            </div>
+            <div className="mt-4">
+                {/* Mostramos los colores seleccionados */}
+                <div className="font-medium">Colores seleccionados:</div>
+                <div className="flex flex-wrap">
+                    {selectedColors.map((color) => (
+                        <div key={color} className="px-2 py-1 bg-blue-200 text-blue-800 rounded-full m-1">
+                            {color}
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
+    );
+};
 
-    )
-}
 export default Color
