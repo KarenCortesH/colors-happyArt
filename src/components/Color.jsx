@@ -19,15 +19,19 @@ const Color = () => {
         <div className="max-w-screen-md mx-auto">
             <div className="text-center font-bold text-xl mb-4">Selecciona uno o más colores</div>
             <div className="grid grid-cols-5 gap-4 justify-items-center">
+
+
+
                 {/* Renderizamos las 10 imágenes de colores */}
-                {Array.from({ length: 10 }).map((_, index) => (
+                
+                {Array.from({ length: 10 }).map((_, i) => (
                     <img
-                        key={index}
-                        src={'../assets/Color${index + 1}.jpg'}
-                        alt={'Color ${index + 1}'}
-                        className={`w-32 h-32 cursor-pointer ${selectedColors.includes(`color${index + 1}`) ? 'border-blue-500' : 'border-gray-300'
+                        key={i}
+                        src={`../assets/Color${i + 1}.jpg`}
+                        alt={`color-${i}`}
+                        className={`w-32 h-32 cursor-pointer ${selectedColors.includes(`color${i + 1}`) ? 'border-blue-500' : 'border-gray-300'
                             }`}
-                        onClick={() => handleColorSelect(`color${index + 1}`)}
+                        onClick={() => handleColorSelect(`color${i + 1}`)}
                     />
                 ))}
             </div>
