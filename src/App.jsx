@@ -1,8 +1,15 @@
-import './App.css'
-import Color from './components/Color'
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Colores from './components/Colores'; // Cambia la importación a 'Colores'
 
-export default function App() {
-  return (
-    <Color></Color>
-  )
-}
+
+
+const App = () => {
+    return (
+        <Router>
+            <Colores></Colores>
+        </Router>
+    );
+};
+
+export default App;

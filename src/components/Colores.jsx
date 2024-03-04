@@ -27,6 +27,11 @@ const Colores = () => {
         }
     };
 
+    const saveSelectedColors = () => {
+        localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
+        alert('Colores guardados en el localStorage.');
+    };
+
     useEffect(() => {
         localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
     }, [selectedColors]);
@@ -39,7 +44,7 @@ const Colores = () => {
     const people = Array.from({ length: numberOfPeople }, (_, index) => `Persona ${index + 1}`);
 
     return (
-        <div>
+        <div style={{ overflow: 'auto', maxHeight: '500px' }}>
             <div className="text-center font-bold text-xl mb-4">Ingresa el número de personas:</div>
             <input
                 type="number"
@@ -71,16 +76,20 @@ const Colores = () => {
                     />
                 ))}
             </div>
+            <button onClick={saveSelectedColors} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Guardar Colores</button>
             <div className="mt-4">
-                <div className="font-medium">Colores seleccionados para {selectedPerson}:</div>
-                <div className="flex flex-wrap">
-                    {selectedColors[selectedPerson] &&
-                        selectedColors[selectedPerson].map((color, index) => (
-                            <div key={index} className="px-2 py-1 bg-blue-200 text-blue-800 rounded-full m-1">
-                                {color}
-                            </div>
-                        ))}
-                </div>
+                {Object.keys(selectedColors).map(person => (
+                    <div key={person} className="mb-4">
+                        <div className="font-bold">{person}</div>
+                        <div className="flex flex-wrap">
+                            {selectedColors[person].map((color, index) => (
+                                <div key={index} className="px-2 py-1 bg-blue-200 text-blue-800 rounded-full m-1">
+                                    {color}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
