@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Person from './Person';
 
-const Colores = ({ numberOfPeople }) => {
+const Colores = () => {
     const [selectedColors, setSelectedColors] = useState({});
     const [selectedPerson, setSelectedPerson] = useState('');
+    const [numberOfPeople, setNumberOfPeople] = useState(0);
 
     const handleColorSelect = (color) => {
         if (!selectedPerson) {
@@ -30,11 +31,22 @@ const Colores = ({ numberOfPeople }) => {
         localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
     }, [selectedColors]);
 
+    const handleNumberOfPeopleChange = (e) => {
+        const value = parseInt(e.target.value);
+        setNumberOfPeople(value);
+    };
+
     const people = Array.from({ length: numberOfPeople }, (_, index) => `Persona ${index + 1}`);
 
     return (
         <div>
-            <Person setNumberOfPeople={numberOfPeople} />
+            <div className="text-center font-bold text-xl mb-4">Ingresa el número de personas:</div>
+            <input
+                type="number"
+                value={numberOfPeople}
+                onChange={handleNumberOfPeopleChange}
+                className="block w-full p-2 mb-4"
+            />
             <div className="text-center font-bold text-xl mb-4">Selecciona una persona:</div>
             <select
                 value={selectedPerson}
