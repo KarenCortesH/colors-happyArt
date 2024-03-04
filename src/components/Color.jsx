@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Person from './Person';
 
 const Colores = ({ numberOfPeople }) => {
     const [selectedColors, setSelectedColors] = useState({});
@@ -33,6 +34,7 @@ const Colores = ({ numberOfPeople }) => {
 
     return (
         <div>
+            <Person setNumberOfPeople={numberOfPeople} />
             <div className="text-center font-bold text-xl mb-4">Selecciona una persona:</div>
             <select
                 value={selectedPerson}
