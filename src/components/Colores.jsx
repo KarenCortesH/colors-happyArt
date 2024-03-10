@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Person from './Person';
 
 const Colores = () => {
     const [selectedColors, setSelectedColors] = useState({});
     const [selectedPerson, setSelectedPerson] = useState('');
     const [numberOfPeople, setNumberOfPeople] = useState(0);
+    const navigate = useNavigate();
 
     const handleColorSelect = (color) => {
         if (!selectedPerson) {
@@ -28,8 +30,12 @@ const Colores = () => {
     };
 
     const saveSelectedColors = () => {
+        // localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
+        // alert('Colores guardados en el localStorage.');
         localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
         alert('Colores guardados en el localStorage.');
+        navigate('/OtraPagina');
+
     };
 
     useEffect(() => {
@@ -49,7 +55,7 @@ const Colores = () => {
                 <div className="text-center mt-4">
                     <img src="../assets/Logo.jpeg" alt="Logo" className="w-50 h-32 mx-auto mb-4" />
                 </div>
-            
+
                 <div className="text-center font-bold text-xl mb-4">Ingresa el número de personas:</div>
                 <input
                     type="number"
@@ -75,10 +81,10 @@ const Colores = () => {
                         <img
                             key={i}
                             src={`../assets/Color${i + 1}.jpg`}
-                            alt={`color-${i}`}
-                            className={`w-32 h-32 cursor-pointer ${selectedColors[selectedPerson] && selectedColors[selectedPerson].includes(`color${i + 1}`) ? 'border-blue-500' : 'border-gray-300'
+                            alt={`Color-${i}`}
+                            className={`w-32 h-32 cursor-pointer ${selectedColors[selectedPerson] && selectedColors[selectedPerson].includes(`Color${i + 1}`) ? 'border-blue-500' : 'border-gray-300'
                                 }`}
-                            onClick={() => handleColorSelect(`color${i + 1}`)}
+                            onClick={() => handleColorSelect(`Color${i + 1}`)}
                         />
                     ))}
                 </div>
@@ -89,20 +95,6 @@ const Colores = () => {
                     <button onClick={saveSelectedColors} type="button" className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white font-bold py-2 px-4 rounded">
                         Guardar Colores
                     </button>
-                </div>
-                <div className="mt-4">
-                    {Object.keys(selectedColors).map(person => (
-                        <div key={person} className="mb-4">
-                            <div className="font-bold">{person}</div>
-                            <div className="flex flex-wrap">
-                                {selectedColors[person].map((color, index) => (
-                                    <div key={index} className="px-2 py-1 bg-blue-200 text-blue-800 rounded-full m-1">
-                                        {color}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
                 </div>
             </div>
         </div>
