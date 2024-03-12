@@ -30,10 +30,8 @@ const Colores = () => {
     };
 
     const saveSelectedColors = () => {
-        // localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
-        // alert('Colores guardados en el localStorage.');
         localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
-        alert('Colores guardados en el localStorage.');
+        alert('Colores Guardados');
         navigate('/OtraPagina');
 
     };
@@ -56,25 +54,25 @@ const Colores = () => {
                     <img src="../assets/Logo.jpeg" alt="Logo" className="w-50 h-32 mx-auto mb-4" />
                 </div>
 
-                <div className="text-center font-bold text-xl mb-4">Ingresa el número de personas:</div>
+                <div className="text-center font text-lg mb-4">Número de personas</div>
                 <input
                     type="number"
                     value={numberOfPeople}
                     onChange={handleNumberOfPeopleChange}
                     className="block w-full p-2 mb-4"
                 />
-                <div className="text-center font-bold text-xl mb-4">Selecciona una persona:</div>
+                <div className="text-center font text-lg mb-4">Selecciona cada persona:</div>
                 <select
                     value={selectedPerson}
                     onChange={(e) => setSelectedPerson(e.target.value)}
-                    className="block w-full p-2 mb-4"
+                    className="block  italic w-full p-2 mb-4"
                 >
                     <option value="">Selecciona una persona...</option>
                     {people.map((person, index) => (
                         <option key={index} value={person}>{person}</option>
                     ))}
                 </select>
-                <div className="text-center font-bold text-xl mb-4">Selecciona uno o más colores</div>
+                <div className="text-center font  text-lg mb-4">Elige los colores que necesitas</div>
                 <br />
                 <div className="grid grid-cols-5 gap-4 justify-items-center">
                     {Array.from({ length: 20 }).map((_, i) => (

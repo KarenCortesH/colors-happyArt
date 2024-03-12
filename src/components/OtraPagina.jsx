@@ -24,14 +24,14 @@ const OtraPagina = () => {
             <div className="text-center mt-4">
                 <img src="../assets/Logo.jpeg" alt="Logo" className="w-50 h-32 mx-auto mb-4" />
             </div>
-            <h1 className="text-3xl font-bold mb-4">Listado de Colores a Pedir:</h1>
+            <h1 className="text-3xl font-bold mb-4">Listado de Colores:</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
                 {Object.keys(selectedColors).map(person => (
-                    <div key={person} className="bg-gray-100 p-4 rounded-lg">
+                    <div key={person} className="bg-gray-200 p-4 rounded-lg">
                         <h2 className="text-xl font-bold mb-2">{person}</h2>
                         <div className="flex flex-wrap">
                             {selectedColors[person].map((color, index) => (
-                                <div key={index} className="px-4 py-4 bg-red-200 text-black-900 rounded-full m-1">
+                                <div key={index} className="px-4 py-4 bg-indigo-300 text-black-900 rounded-full m-1">
                                     {color}
                                 </div>
                             ))}
