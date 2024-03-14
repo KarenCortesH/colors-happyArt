@@ -10,11 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "particles.js": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.22.3",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles": "^2.12.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
