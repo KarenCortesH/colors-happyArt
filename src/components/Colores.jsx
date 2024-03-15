@@ -99,7 +99,7 @@ const Colores = () => {
 
                 <div className="text-center font-bold text-lg mb-4">Elige los colores que necesitas</div>
                 <div className="grid grid-cols-5 gap-4 justify-items-center">
-                    {Array.from({ length: 20 }).map((_, i) => (
+                    {Array.from({ length: 32 }).map((_, i) => (
                         <img
                             key={i}
                             src={`../assets/Color${i + 1}.jpg`}
