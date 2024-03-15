@@ -37,7 +37,7 @@ const Colores = () => {
     const saveSelectedColors = () => {
         localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
         alert('Colores Guardados');
-        navigate('/OtraPagina');
+        navigate('/ListColors');
     };
 
     useEffect(() => {
@@ -67,11 +67,11 @@ const Colores = () => {
                         <select
                             value={selectedTable}
                             onChange={handleTableChange}
-                            className="block p-2"
+                            className="block italic w-full p-2"
                         >
                             <option value="">Selecciona una mesa</option>
-                            <option value="Mesa1">Mesa 1</option>
-                            <option value="Mesa2">Mesa 2</option>
+                            <option value="Mesa 1">Mesa 1</option>
+                            <option value="Mesa 2">Mesa 2</option>
                         </select>
                     </div>
                     <div className="w-1/3">
@@ -79,7 +79,7 @@ const Colores = () => {
                             type="number"
                             value={numberOfPeople}
                             onChange={handleNumberOfPeopleChange}
-                            className="block w-full p-2"
+                            className="block italic w-full p-2"
                             placeholder="Ingresa el numero de personas"
                         />
                     </div>
