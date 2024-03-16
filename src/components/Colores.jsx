@@ -62,8 +62,8 @@ const Colores = () => {
                     <img src="../assets/Logo.jpeg" alt="Logo" className="w-50 h-32 mx-auto mb-4" />
                 </div>
 
-                <div className="flex justify-between mb-4">
-                    <div className="w-1/3">
+                <div className="flex flex-wrap justify-between mb-4">
+                    <div className="w-full md:w-1/3 mb-4 md:mb-0">
                         <select
                             value={selectedTable}
                             onChange={handleTableChange}
@@ -74,7 +74,7 @@ const Colores = () => {
                             <option value="Mesa 2">Mesa 2</option>
                         </select>
                     </div>
-                    <div className="w-1/3">
+                    <div className="w-full md:w-1/3 mb-4 md:mb-0">
                         <input
                             type="number"
                             value={numberOfPeople}
@@ -83,7 +83,7 @@ const Colores = () => {
                             placeholder="Ingresa el numero de personas"
                         />
                     </div>
-                    <div className="w-1/3">
+                    <div className="w-full md:w-1/3">
                         <select
                             value={selectedPerson}
                             onChange={(e) => setSelectedPerson(e.target.value)}
@@ -98,13 +98,13 @@ const Colores = () => {
                 </div>
 
                 <div className="text-center font-bold text-lg mb-4">Elige los colores que necesitas</div>
-                <div className="grid grid-cols-5 gap-4 justify-items-center">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 justify-items-center">
                     {Array.from({ length: 32 }).map((_, i) => (
                         <img
                             key={i}
                             src={`../assets/Color${i + 1}.jpg`}
                             alt={`Color-${i}`}
-                            className={`w-32 h-32 cursor-pointer ${selectedColors[selectedTable] && selectedColors[selectedTable][selectedPerson] && selectedColors[selectedTable][selectedPerson].includes(`Color${i + 1}`) ? 'border-blue-500' : 'border-gray-300'
+                            className={`w-24 md:w-32 h-24 md:h-32 cursor-pointer ${selectedColors[selectedTable] && selectedColors[selectedTable][selectedPerson] && selectedColors[selectedTable][selectedPerson].includes(`Color${i + 1}`) ? 'border-blue-500' : 'border-gray-300'
                                 }`}
                             onClick={() => handleColorSelect(`Color${i + 1}`)}
                         />
